@@ -17,6 +17,7 @@ spec:
       annotations:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
+      restartPolicy: Always
       selector: 
         matchLabels:
           app: {{ .Chart.Name }}
@@ -68,8 +69,6 @@ spec:
           mountPath: /app/appsettings.json
           subPath: appsettings.json
         {{- end }}        
-        
-    restartPolicy: Always
     volumes: 
     {{ if .Values.deployment.appsettings }}
     - name: appsettings-volume
