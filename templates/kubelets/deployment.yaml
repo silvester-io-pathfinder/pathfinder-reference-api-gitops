@@ -68,12 +68,12 @@ spec:
           mountPath: /app/appsettings.json
           subPath: appsettings.json
         {{- end }}        
-    volumes: 
-    {{ if .Values.deployment.appsettings }}
-    - name: appsettings-volume
-      configMap:
-        name: {{ .Chart.Name }}-configmap-appsettings
-        defaultMode: 0777
-    {{ end }}
+      volumes: 
+      {{ if .Values.deployment.appsettings }}
+      - name: appsettings-volume
+        configMap:
+          name: {{ .Chart.Name }}-configmap-appsettings
+          defaultMode: 0777
+      {{ end }}
 {{ end }}    
     
