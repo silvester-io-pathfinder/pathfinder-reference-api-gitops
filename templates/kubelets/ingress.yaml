@@ -1,5 +1,5 @@
-{{ $url := pf2e.io }}
-{{ $basePath := api }}
+{{ $url := "pf2e.io" }}
+{{ $basePath := "api" }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
