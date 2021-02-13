@@ -1,0 +1,6 @@
+apiVersion: v2
+name: pathfinder-official-api
+description: GraphQL API exposing Pathfinder 2e entities that are officially included in the published handbooks.
+type: application
+version: 0.0.1
+appVersion: "1.16.0"

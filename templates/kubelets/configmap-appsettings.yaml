@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-configmap-appsettings
+  namespace: pathfinder
+  labels:
+    app: {{ .Chart.Name }}
+    release: {{ .Chart.Name }}
+data:
+  appsettings.json: |
+{{- if .Values.deployment.appsettings }}
+  {{- .Values.deployment.appsettings | toPrettyJson | nindent 4 }} 
+{{- end }}  
