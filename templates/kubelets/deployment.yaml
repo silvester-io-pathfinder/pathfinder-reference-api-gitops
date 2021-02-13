@@ -21,7 +21,7 @@ spec:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
       imagePullSecrets:
-      - name: regcred
+      - name: artifactory-credentials
       containers:
       - name: {{ .Chart.Name }}
         image: 	silvester-docker/pathfinder-official-api/{{ .Values.version }}
