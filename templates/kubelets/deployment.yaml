@@ -17,7 +17,6 @@ spec:
       annotations:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
-      restartPolicy: Always
       selector: 
         matchLabels:
           app: {{ .Chart.Name }}
