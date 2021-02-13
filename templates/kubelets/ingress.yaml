@@ -1,8 +1,29 @@
+{{ $url := pf2e.io }}
+{{ $basePath := api }}
 apiVersion: extensions/v1beta1
 kind: Ingress
-metadata: 
-  name: {{ .Chart.Name }}
-  annotations: 
+metadata:
+  name: {{ .Cart.Name }}-ingress
+  namespace: pathfinder
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.sslTermination | quote }}
-    
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header x-forwarded-path {{ $basePath | quote }}
+      proxy_set_header x-forwarded-host {{ $url | quote }}
+      proxy_set_header x-forwarded-proto "https"
+spec:
+  rules:
+  - host: {{ $url }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Chart.Name }}
+          servicePort: 80
+        path: /{{ $basePath }}(/|$)(.*)
+  tls:
+  - hosts:
+    - {{ $url }}
+    secretName: {{ .Chart.Name }}-tls

@@ -23,7 +23,7 @@ spec:
       containers:
       - name: {{ .Chart.Name }}
         image: https://silvester.jfrog.io/artifactory/silvester-docker/pathfinder-official-api/{{ .Values.version }}
-        imagePullPolicy: always
+        imagePullPolicy: Always
         
         {{ if .Values.deployment.probes.liveness.enabled }}
         livenessProbe:
