@@ -56,11 +56,11 @@ spec:
           
         resources:
           request:
-            memory: 
-            cpu: 
+            memory: 128Mi
+            cpu: 0.1m
           limits:
-            memory:
-            cpu: 
+            memory: 256Mi
+            cpu: 0.25m
 
         volumeMounts:
         {{- if .Values.deployment.appsettings }}
