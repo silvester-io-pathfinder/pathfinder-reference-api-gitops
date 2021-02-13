@@ -20,9 +20,11 @@ spec:
       annotations:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: {{ .Chart.Name }}
-        image: 	https://silvester.jfrog.io/silvester-docker/pathfinder-official-api/{{ .Values.version }}/
+        image: 	silvester.jfrog.io/silvester-docker/pathfinder-official-api/{{ .Values.version }}/
         imagePullPolicy: Always
         
         {{ if .Values.deployment.probes.liveness.enabled }}
