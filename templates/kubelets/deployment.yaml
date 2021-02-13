@@ -24,7 +24,7 @@ spec:
       - name: regcred
       containers:
       - name: {{ .Chart.Name }}
-        image: 	silvester.jfrog.io/silvester-docker/pathfinder-official-api/{{ .Values.version }}/
+        image: 	silvester-docker/pathfinder-official-api/{{ .Values.version }}
         imagePullPolicy: Always
         
         {{ if .Values.deployment.probes.liveness.enabled }}
