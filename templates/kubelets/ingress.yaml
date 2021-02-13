@@ -11,9 +11,9 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/ssl-redirect: {{ .Values.ingress.sslTermination | quote }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header x-forwarded-path {{ $basePath | quote }}
-      proxy_set_header x-forwarded-host {{ $url | quote }}
-      proxy_set_header x-forwarded-proto "https"
+      proxy_set_header x-forwarded-path {{ $basePath | quote }};
+      proxy_set_header x-forwarded-host {{ $url | quote }};
+      proxy_set_header x-forwarded-proto "https";
 spec:
   rules:
   - host: {{ $url }}
