@@ -8,6 +8,9 @@ metadata:
     apps: {{ .Chart.Name }}
     release: {{ .Chart.Name }}
 spec:
+  selector: 
+    matchLabels:
+      app: {{ .Chart.Name }}
   replicas: 1
   template:
     metadata:
@@ -17,9 +20,6 @@ spec:
       annotations:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
-      selector: 
-        matchLabels:
-          app: {{ .Chart.Name }}
       containers:
       - name: {{ .Chart.Name }}
         image: https://silvester.jfrog.io/artifactory/silvester-docker/pathfinder-official-api/{{ .Values.version }}
