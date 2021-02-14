@@ -9,6 +9,5 @@ spec:
   type: NodePort
   ports:
    - port: 5432
-     nodePort: 30007
   selector:
    app: {{ .Chart.Name }}-postgres

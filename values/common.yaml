@@ -11,7 +11,7 @@ deployment:
       official:
         enabled: false
         server: pathfinder-official-api-postgres
-        port: 30007
+        port: 5432
         database: database_pathfiner_official
         password: password
         userId: user

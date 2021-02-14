@@ -28,7 +28,7 @@ spec:
             cpu: 0.25m
         env:
         - name: POSTGRES_DB
-          value: database_pathfiner_official
+          value: database_pathfinder_official
         - name: POSTGRES_PASSWORD
           value: password
         - name: POSTGRES_USER
