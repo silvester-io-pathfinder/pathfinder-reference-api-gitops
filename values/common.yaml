@@ -10,7 +10,8 @@ deployment:
     databases:
       official:
         enabled: true
-        server: pathfinder-official-api-postgres:30007
+        server: pathfinder-official-api-postgres
+        port: 30007
         database: database_pathfiner_official
         password: password
         userId: user
