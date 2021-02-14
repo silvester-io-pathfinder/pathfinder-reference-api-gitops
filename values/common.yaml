@@ -1,5 +1,5 @@
 deployment:
-  enabled: true
+  enabled: false
   appsettings:
     logging: 
       includeScopes: true
