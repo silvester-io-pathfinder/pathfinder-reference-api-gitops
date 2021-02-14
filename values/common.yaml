@@ -9,6 +9,7 @@ deployment:
         microsoft: Information 
     databases:
       official:
+        enabled: false
         server: pathfinder-official-api-postgres
         database: database_pathfiner_official
         
