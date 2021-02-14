@@ -19,6 +19,13 @@ spec:
         imagePullPolicy: "Always"
         ports:
         - containerPort: 5432
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 0.1m
+          limits:
+            memory: 256Mi
+            cpu: 0.25m
         env:
         - name: POSTGRES_DB
           value: database_pathfiner_official
