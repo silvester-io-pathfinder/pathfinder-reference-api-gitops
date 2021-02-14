@@ -9,7 +9,7 @@ deployment:
         microsoft: Information 
     databases:
       official:
-        enabled: false
+        enabled: true
         server: pathfinder-official-api-postgres
         port: 5432
         database: database_pathfiner_official
