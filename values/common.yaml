@@ -9,7 +9,7 @@ deployment:
         microsoft: Information 
     databases:
       official:
-        enabled: true
+        enabled: false
         server: pathfinder-official-api-postgres
         port: 30007
         database: database_pathfiner_official
@@ -18,7 +18,7 @@ deployment:
         
   probes:
     liveness:
-      enabled: true
+      enabled: false
       initialDelaySeconds: 60
       periodSeconds: 30
       timeoutSeconds: 10
