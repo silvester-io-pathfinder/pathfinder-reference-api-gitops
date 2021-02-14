@@ -4,6 +4,9 @@ metadata:
   namespace: pathfinder
   name: {{ .Chart.Name }}-postgres
 spec:
+  selector: 
+    matchLabels:
+      app: {{ .Chart.Name }}-postgres
   replicas: 1
   template:
     metadata:
