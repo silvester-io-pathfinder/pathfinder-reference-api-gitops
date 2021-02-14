@@ -27,6 +27,18 @@ spec:
         image: silvester.jfrog.io/silvester-docker/pathfinder-official-api:{{ .Values.version }}
         imagePullPolicy: Always
         
+        env:
+        - name: DATABASES__OFFICIAL__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: database-pathfinder-official-secret
+              key: password
+        - name: DATABASES__OFFICIAL__USERID
+          valueFrom:
+            secretKeyRef:
+              name: database-pathfinder-official-secret
+              key: user
+
         {{ if .Values.deployment.probes.liveness.enabled }}
         livenessProbe:
           initialDelaySeconds: {{ .Values.deployment.probes.liveness.initialDelaySeconds }}

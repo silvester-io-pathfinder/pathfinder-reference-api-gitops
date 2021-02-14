@@ -7,6 +7,10 @@ deployment:
         default: Information
         system: Information
         microsoft: Information 
+    databases:
+      official:
+        server: pathfinder-official-api-postgres
+        database: database_pathfiner_official
         
   probes:
     liveness:
