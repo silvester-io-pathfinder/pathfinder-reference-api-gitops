@@ -12,6 +12,8 @@ deployment:
         enabled: true
         server: pathfinder-official-api-postgres
         database: database_pathfiner_official
+        password: password
+        user: user
         
   probes:
     liveness:

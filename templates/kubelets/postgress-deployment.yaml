@@ -30,12 +30,6 @@ spec:
         - name: POSTGRES_DB
           value: database_pathfiner_official
         - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: database-pathfinder-official-secret
-              key: password
+          value: password
         - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: database-pathfinder-official-secret
-              key: user
+          value: user
