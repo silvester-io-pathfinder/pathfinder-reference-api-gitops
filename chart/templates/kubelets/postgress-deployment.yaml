@@ -24,8 +24,8 @@ spec:
             memory: 128Mi
             cpu: 0.1m
           limits:
-            memory: 256Mi
-            cpu: 0.25m
+            memory: 512Mi
+            cpu: 0.9m
         env:
         - name: POSTGRES_DB
           value: database_pathfinder_official
