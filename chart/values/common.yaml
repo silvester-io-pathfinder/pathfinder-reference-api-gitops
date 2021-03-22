@@ -14,7 +14,7 @@ deployment:
         port: 5432
         database: database_pathfinder_official
         password: password
-        userId: user
+        userId: pathfinder
         timeout: 15
         commandTimeout: 20
         
