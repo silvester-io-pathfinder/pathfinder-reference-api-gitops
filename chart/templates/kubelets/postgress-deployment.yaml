@@ -27,7 +27,7 @@ spec:
             cpu: 0.1m
           limits:
             memory: 2048Mi
-            cpu: 0.9m
+            cpu: 2m
         env:
         - name: POSTGRES_DB
           value: database_pathfinder_official
@@ -53,3 +53,7 @@ spec:
         startupProbe:
           exec:
             command: ["pg_isready"]
+            timeoutSeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 30
