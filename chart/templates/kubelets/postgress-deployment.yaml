@@ -34,24 +34,24 @@ spec:
         - name: POSTGRES_PASSWORD
           value: password
         - name: POSTGRES_USER
-          value: user
+          value: pathfinder
         readinessProbe:
           exec:
-            command: ["pg_isready", "-U", "user"]
+            command: ["pg_isready", "-U", "pathfinder"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 5
         livenessProbe:
           exec:
-            command: ["pg_isready", "-U", "user"]
+            command: ["pg_isready", "-U", "pathfinder"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
         startupProbe:
           exec:
-            command: ["pg_isready", "-U", "user"]
+            command: ["pg_isready"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
