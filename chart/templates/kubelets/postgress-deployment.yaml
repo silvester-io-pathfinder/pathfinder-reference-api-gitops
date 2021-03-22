@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}-postgres
-        image: postgres:10.4
+        image: postgres:13.2-alpine
         imagePullPolicy: "Always"
         ports:
         - containerPort: 5432
