@@ -37,22 +37,21 @@ spec:
           value: user
         readinessProbe:
           exec:
-            command: ["pg_isready"]
+            command: ["pg_isready", "-U", "user"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 5
         livenessProbe:
           exec:
-            command: ["pg_isready"]
-          initialDelaySeconds: 300
+            command: ["pg_isready", "-U", "user"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
         startupProbe:
           exec:
-            command: ["pg_isready"]
+            command: ["pg_isready", "-U", "user"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
