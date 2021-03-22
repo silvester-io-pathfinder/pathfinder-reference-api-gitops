@@ -39,7 +39,7 @@ spec:
           exec:
             command: ["pg_isready", "-U", "user"]
           initialDelaySeconds: 180
-          timeoutSeconds: 2
+          timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
@@ -47,7 +47,7 @@ spec:
           exec:
             command: ["pg_isready", "-U", "user"]
           initialDelaySeconds: 300
-          timeoutSeconds: 2
+          timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
