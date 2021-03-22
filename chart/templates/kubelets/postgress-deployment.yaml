@@ -26,7 +26,7 @@ spec:
             memory: 128Mi
             cpu: 0.1m
           limits:
-            memory: 512Mi
+            memory: 2048Mi
             cpu: 0.9m
         env:
         - name: POSTGRES_DB
@@ -37,17 +37,19 @@ spec:
           value: user
         readinessProbe:
           exec:
-            command: ["pg_isready", "-U", "user"]
-          initialDelaySeconds: 180
+            command: ["pg_isready"]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
-          failureThreshold: 10
+          failureThreshold: 5
         livenessProbe:
           exec:
-            command: ["pg_isready", "-U", "user"]
+            command: ["pg_isready"]
           initialDelaySeconds: 300
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
+        startupProbe:
+          exec:
+            command: ["pg_isready"]
