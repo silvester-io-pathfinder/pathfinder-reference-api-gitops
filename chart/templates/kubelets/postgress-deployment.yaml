@@ -40,16 +40,16 @@ spec:
         readinessProbe:
           exec:
             command: ["psql", "-U", "user", "-d", "database_pathfinder_official", "-c", "SELECT 1"]
-            initialDelaySeconds: 15
-            timeoutSeconds: 2
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 10
+          initialDelaySeconds: 15
+          timeoutSeconds: 2
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
         livenessProbe:
           exec:
             command: ["psql", "-U", "user", "-d", "database_pathfinder_official", "-c", "SELECT 1"]
-            initialDelaySeconds: 180
-            timeoutSeconds: 2
-            periodSeconds: 10
-            successThreshold: 1
-            failureThreshold: 10
+          initialDelaySeconds: 180
+          timeoutSeconds: 2
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
