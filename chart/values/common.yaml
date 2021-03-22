@@ -10,7 +10,7 @@ deployment:
     databases:
       official:
         enabled: true
-        server: pathfinder-official-api-postgres
+        server: localhost
         port: 5432
         database: database_pathfinder_official
         password: password
