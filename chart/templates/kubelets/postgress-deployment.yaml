@@ -31,24 +31,22 @@ spec:
         env:
         - name: POSTGRES_DB
           value: database_pathfinder_official
-        - name: PGPASSWORD
-          value: password
         - name: POSTGRES_PASSWORD
           value: password
         - name: POSTGRES_USER
           value: user
         readinessProbe:
           exec:
-            command: ["psql", "-U", "user", "-d", "database_pathfinder_official", "-c", "SELECT 1"]
-          initialDelaySeconds: 15
+            command: ["pg_isready", "-U", "user"]
+          initialDelaySeconds: 180
           timeoutSeconds: 2
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
         livenessProbe:
           exec:
-            command: ["psql", "-U", "user", "-d", "database_pathfinder_official", "-c", "SELECT 1"]
-          initialDelaySeconds: 180
+            command: ["pg_isready", "-U", "user"]
+          initialDelaySeconds: 300
           timeoutSeconds: 2
           periodSeconds: 10
           successThreshold: 1
