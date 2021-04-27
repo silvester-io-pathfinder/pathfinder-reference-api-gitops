@@ -35,8 +35,8 @@ spec:
             memory: 128Mi
             cpu: 0.1m
           limits:
-            memory: 2048Mi
-            cpu: 2m
+            memory: 8192Mi
+            cpu: 4m
         env:
         - name: POSTGRES_DB
           value: {{.Values.deployment.appsettings.databases.official.database}}
