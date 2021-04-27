@@ -39,21 +39,21 @@ spec:
             cpu: 2m
         env:
         - name: POSTGRES_DB
-          value: database_pathfinder_official
+          value: {{.Values.deployment.appsettings.databases.official.database}}
         - name: POSTGRES_PASSWORD
-          value: password
+          value: {{.Values.deployment.appsettings.databases.official.password}}
         - name: POSTGRES_USER
-          value: pathfinder
+          value: {{.Values.deployment.appsettings.databases.official.userId}}
         readinessProbe:
           exec:
-            command: ["pg_isready", "-U", "pathfinder"]
+            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.official.userId | quote}}]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 5
         livenessProbe:
           exec:
-            command: ["pg_isready", "-U", "pathfinder"]
+            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.official.userId | quote}}]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1

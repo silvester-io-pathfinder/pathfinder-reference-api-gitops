@@ -14,7 +14,7 @@ deployment:
         port: 5432
         database: database_pathfinder_official
         password: password
-        userId: pathfinder
+        userId: user_pathfinder_official
         timeout: 15
         commandTimeout: 20
         
@@ -37,4 +37,3 @@ deployment:
       
 ingress:
   sslTermination: true
-  
