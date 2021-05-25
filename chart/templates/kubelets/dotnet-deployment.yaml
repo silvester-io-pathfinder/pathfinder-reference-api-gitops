@@ -105,8 +105,8 @@ spec:
             memory: 256Mi
             cpu: 0.5m
           limits:
-            memory: 2048Mi
-            cpu: 1
+            memory: 8192Mi
+            cpu: 4
 
         volumeMounts:
         {{- if .Values.deployment.appsettings }}
