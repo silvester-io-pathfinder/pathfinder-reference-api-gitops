@@ -65,6 +65,9 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 50
+        volumeMounts:
+        - name: tmpfs-data
+          mountPath: /var/lib/postgresql/data
 
         #DOTNET
       - name: {{ .Chart.Name }}
@@ -121,5 +124,8 @@ spec:
           name: {{ .Chart.Name }}-configmap-appsettings
           defaultMode: 0777
       {{ end }}
+      - name: tmpfs-data
+        emptyDir: 
+          medium: Memory
 {{ end }}    
     
