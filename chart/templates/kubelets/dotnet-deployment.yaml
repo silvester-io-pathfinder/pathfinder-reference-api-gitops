@@ -43,21 +43,21 @@ spec:
             cpu: 4
         env:
         - name: POSTGRES_DB
-          value: {{.Values.deployment.appsettings.databases.official.database}}
+          value: {{.Values.deployment.appsettings.databases.reference.database}}
         - name: POSTGRES_PASSWORD
-          value: {{.Values.deployment.appsettings.databases.official.password}}
+          value: {{.Values.deployment.appsettings.databases.reference.password}}
         - name: POSTGRES_USER
-          value: {{.Values.deployment.appsettings.databases.official.userId}}
+          value: {{.Values.deployment.appsettings.databases.reference.userId}}
         readinessProbe:
           exec:
-            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.official.userId | quote}}]
+            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.reference.userId | quote}}]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 5
         livenessProbe:
           exec:
-            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.official.userId | quote}}]
+            command: ["pg_isready", "-U", {{.Values.deployment.appsettings.databases.reference.userId | quote}}]
           timeoutSeconds: 30
           periodSeconds: 10
           successThreshold: 1
@@ -75,7 +75,7 @@ spec:
 
         #DOTNET
       - name: {{ .Chart.Name }}
-        image: silvester.jfrog.io/silvester-docker/pathfinder-official-api:{{ .Values.version }}
+        image: silvester.jfrog.io/silvester-docker/pathfinder-reference-api:{{ .Values.version }}
         imagePullPolicy: Always
 
         {{ if .Values.deployment.probes.liveness.enabled }}
