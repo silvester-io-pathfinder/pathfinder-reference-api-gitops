@@ -2,4 +2,4 @@ version: 0.1.0
 cluster: staging
 
 ingress:
-  host: pf2e.io
+  host: staging.pf2e.io
