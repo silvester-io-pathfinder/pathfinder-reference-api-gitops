@@ -1,5 +1,5 @@
 version: 0.1.0
-cluster: production
+cluster: staging
 
 ingress:
   host: pf2e.io
