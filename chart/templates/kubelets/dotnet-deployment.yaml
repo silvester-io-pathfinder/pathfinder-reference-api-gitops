@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ .Chart.Name }}-{{ .Values.cluster }}
   namespace: pathfinder
   labels: 
-    apps: {{ .Chart.Name }}
-    release: {{ .Chart.Name }}
+    apps: {{ .Chart.Name }}-{{ .Values.cluster }}
+    release: {{ .Chart.Name }}-{{ .Values.cluster }}
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: /metrics
@@ -14,13 +14,13 @@ metadata:
 spec:
   selector: 
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: {{ .Chart.Name }}-{{ .Values.cluster }}
   replicas: 1
   template:
     metadata:
-      name: {{ .Chart.Name }}
+      name: {{ .Chart.Name }}-{{ .Values.cluster }}
       labels:
-        app: {{ .Chart.Name }}
+        app: {{ .Chart.Name }}-{{ .Values.cluster }}
       annotations:
         valuesChecksum: {{ .Values | toYaml | sha256sum | trunc 63 }}
     spec:
@@ -29,7 +29,7 @@ spec:
       containers:
       
         #POSTGRESS
-      - name: {{ .Chart.Name }}-postgres
+      - name: {{ .Chart.Name }}-postgres-{{ .Values.cluster }}
         image: postgres:13.2-alpine
         imagePullPolicy: "Always"
         ports:
@@ -74,7 +74,7 @@ spec:
           mountPath: /var/lib/postgresql/data
 
         #DOTNET
-      - name: {{ .Chart.Name }}
+      - name: {{ .Chart.Name }}-{{ .Values.cluster }}
         image: silvester.jfrog.io/silvester-docker/pathfinder-reference-api:{{ .Values.version }}
         imagePullPolicy: Always
 
