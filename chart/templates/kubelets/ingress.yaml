@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-ingress
+  name: {{ .Chart.Name }}-ingress-{{ .Values.cluster }}
   namespace: pathfinder
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -21,11 +21,11 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: {{ .Chart.Name }}
+          serviceName: {{ .Chart.Name }}-{{ .Values.cluster }}
           servicePort: 80
         path: /{{ $basePath }}(/|$)(.*)
   tls:
   - hosts:
     - {{ .Values.ingress.host  }}
-    secretName: {{ .Chart.Name }}-tls
+    secretName: {{ .Chart.Name }}-tls-{{ .Values.cluster }}
 

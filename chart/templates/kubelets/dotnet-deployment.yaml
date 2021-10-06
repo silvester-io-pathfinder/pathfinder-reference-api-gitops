@@ -125,7 +125,7 @@ spec:
       {{ if .Values.deployment.appsettings }}
       - name: appsettings-volume
         configMap:
-          name: {{ .Chart.Name }}-configmap-appsettings
+          name: {{ .Chart.Name }}-configmap-appsettings-{{ .Values.cluster }}
           defaultMode: 0777
       {{ end }}
       - name: tmpfs-data
