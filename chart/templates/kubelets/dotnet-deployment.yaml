@@ -30,7 +30,7 @@ spec:
       
         #POSTGRESS
       - name: {{ .Chart.Name }}-postgres-{{ .Values.cluster }}
-        image: postgres:13.2-alpine
+        image: silvester.jfrog.io/silvester-docker/pathfinder-reference-api-database:{{ .Values.version }}
         imagePullPolicy: "Always"
         ports:
         - containerPort: 5432
