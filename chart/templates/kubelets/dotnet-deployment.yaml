@@ -31,7 +31,7 @@ spec:
         #POSTGRESS
       - name: {{ .Chart.Name }}-postgres-{{ .Values.cluster }}
         image: silvester.jfrog.io/silvester-docker/pathfinder-reference-api-database:{{ .Values.version }}
-        imagePullPolicy: "Always"
+        imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 5432
         resources:
@@ -76,7 +76,7 @@ spec:
         #DOTNET
       - name: {{ .Chart.Name }}-{{ .Values.cluster }}
         image: silvester.jfrog.io/silvester-docker/pathfinder-reference-api:{{ .Values.version }}
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
 
         {{ if .Values.deployment.probes.liveness.enabled }}
         livenessProbe:
