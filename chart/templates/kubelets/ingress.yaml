@@ -1,5 +1,5 @@
 {{ $basePath := "api" }}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Chart.Name }}-ingress-{{ .Values.cluster }}
@@ -21,9 +21,12 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: {{ .Chart.Name }}-{{ .Values.cluster }}
-          servicePort: 80
+          service:
+            name: {{ .Chart.Name }}-{{ .Values.cluster }}
+            port:
+              number: 80
         path: /{{ $basePath }}(/|$)(.*)
+        pathType: ImplementationSpecific
   tls:
   - hosts:
     - {{ .Values.ingress.host  }}
